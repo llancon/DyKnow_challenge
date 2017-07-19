@@ -99,5 +99,82 @@
     <li><a href="#">Separated link</a></li>
   </ul>
 </div>
+<!--Load the AJAX API-->
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+
+     // Load the Visualization API and the corechart package.
+     google.charts.load('current', {'packages':['corechart']});
+
+     // Set a callback to run when the Google Visualization API is loaded.
+     google.charts.setOnLoadCallback(drawChart);
+
+
+     // Callback that creates and populates a data table,
+     // instantiates the pie chart, passes in the data and
+     // draws it.
+     function drawChart() {
+
+       // Create the data table.
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Website or App');
+       data.addColumn('number', 'Total Time');
+       data.addRows([
+         ['mathlab.com', 198 ],
+         ['gaggle.net', 106.4],
+         ['GeometryApp', 71.4],
+         ['wikipedia.org', 36.4],
+         ['Other', 86.8]
+       ]);
+
+       // Set chart options
+       var options = {'title':'Cumulative Minutes Spent Viewing Website or App',
+                      'width': '50%',
+                      'height':500};
+
+
+       // Instantiate and draw our chart, passing in some options.
+       var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+       chart.draw(data, options);
+     }
+
+   </script>
+
+ </head>
+
+ <body>
+   <!--Div that will hold the pie chart-->
+   <div id="chart_div"></div>
+ </body>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+     google.charts.load('current', {'packages':['table']});
+     google.charts.setOnLoadCallback(drawTable);
+
+     function drawTable() {
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Website or App');
+       data.addColumn('number', 'Total Time');
+       data.addColumn('number', '# Students');
+       data.addColumn('number', 'Avg Time/Students');
+       data.addRows([
+         ['mathlab.com',  {v: 198, f: '198 hrs'}, 147,{v: 1.35, f: '1.35 hrs'}],
+         ['gaggle.net',  {v: 106.4, f: '106.4 hrs'}, 147,{v: 43.4, f: '43.4 mins'}],
+         ['GeometryApp',  {v: 71.4, f: '71.4 hrs'}, 147,{v: 28.6, f: '28.6 mins'}],
+         ['wikipedia.org',  {v: 36.4, f: '36.4 hrs'}, 91,{v: 24.0, f: '24.0 mins'}],
+         ['Other',  {v: 86.8, f: '86.8 hrs'}, 119,{v: 43.76, f: '43.76 mins'}]
+       ]);
+
+       var table = new google.visualization.Table(document.getElementById('table_div'));
+
+       table.draw(data, {showRowNumber: true, width: '50%', height: '100%'});
+     }
+   </script>
+ </head>
+ <body>
+   <div id="table_div"></div>
+ </body>
+
 </body>
+
 </html>
